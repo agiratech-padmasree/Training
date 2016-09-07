@@ -57,13 +57,17 @@ end
 
   # DELETE /users/1
   # DELETE /users/1.json
-  def destroy
+def destroy
+    begin
     @user.destroy
+    flash[:notice] = "User #{@user.name} deleted"
+    rescue StandardError => e
+    flash[:notice] = e.message
+end
     respond_to do |format|
-      format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
-      format.json { head :no_content }
-    end
-  end
+    format.html { redirect_to users_url }
+    format.json { head :no_content }
+end
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -75,4 +79,5 @@ end
     def user_params
       params.require(:user).permit(:name, :password, :password_confirmation)
     end
+end
 end
