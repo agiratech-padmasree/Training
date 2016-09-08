@@ -20,7 +20,8 @@ padding: 10px;
 border-bottom: 2px solid;
 font: small-caps 40px/40px "Times New Roman", serif;
 color: #282;
-text-align: right;
+text-align: right;	
+
 img {
 float: left;
 }
@@ -111,6 +112,7 @@ display: none
 float: right;
 margin: -0.25em 0.1em;
 }
+
 }
 }
 }
