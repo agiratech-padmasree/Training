@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>Testap47</title>
+   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+   <%= csrf_meta_tags %>
+</head>
+<body class="<%= controller.controller_name %>">
+<div id="banner">
+   <%= image_tag("logo1.jpg") %>
+   <%= @page_title || "Admin Module" %>
+</div>
+  <div id="columns">
+   <p class="notice"><%= notice %></p>  
+   <p class = "alert"><%= alert %></p>
+   <% if user_signed_in? %>
+    <li>
+    <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>        
+    </li>
+   <% else %>
+    <li>
+    <%= link_to('Login', new_user_session_path)  %>  
+    </li>
+   <% end %>
+   <div id="side">
+     <% if user_signed_in? %>
+    <li>
+    <% if current_user.is_admin? %>
+      <%= link_to'Dashboards', dashboards_path %>
+      <li><%= link_to 'create product', new_product_path %></li>
+      <li><%= link_to 'Products ', products_path %></li>
+      <li><%= link_to 'Users ', users_path %></li>        
+      </li>
+    <% end %>
+    <% end %>
+ </div>
+  <div id="main">
+   <%= yield %>
+  </div>
+  </div>
+</body>
+</html>

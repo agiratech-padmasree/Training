@@ -1,0 +1,30 @@
+<%= form_for(@product) do |f| %>
+<div class= "fields">
+<%= f.label :title %>
+<%= f.text_field :title %>  
+</div>
+<div class="fields">
+<%= f.label :price %>
+<%= f.text_field :price %>  
+</div>  
+<div class="fields">  
+  <%= f.label :description %>
+  <%= f.text_area :description %>
+</div>  
+<div class="fields">
+  <%= f.label :image_url %>
+  <%= f.text_field :image_url %>  
+</div>  
+<div class= "fields">
+  <%= f.label :quantity %>
+  <%= f.text_field :quantity %>  
+</div>
+<div id="field">
+  <%= f.label "deactivate a product",as: :boolean do %> <br />
+  <%= f.check_box :is_active, {}, "true", "false" %> <br />
+  <% end %>
+</div> 
+<div class = "actions">
+  <%= f.submit %>  
+</div>  
+<% end %>
